@@ -1,16 +1,19 @@
 package com.devspace.recyclerview
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.TextView
+import android.util.Log
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,12 +25,25 @@ class MainActivity : AppCompatActivity() {
         }
 
         val rvList = findViewById<RecyclerView>(R.id.rv_list)
+        val ivList = findViewById<ImageView>(R.id.iv_list)
+        val ivGrid = findViewById<ImageView>(R.id.iv_grid)
         val adapter = ContactListAdapter()
 
         rvList.adapter = adapter
         rvList.layoutManager = LinearLayoutManager(this)
-
         adapter.submitList(contacts)
+
+        ivGrid.setOnClickListener {
+            rvList.layoutManager = GridLayoutManager(this, 2)
+        }
+
+        ivList.setOnClickListener {
+            rvList.layoutManager = LinearLayoutManager(this)
+        }
+
+        adapter.setClickOnListener { contact ->
+            Log.d("alex", contact.toString())
+        }
     }
 }
 
@@ -53,37 +69,37 @@ val contacts = listOf(
         R.drawable.sample3
     ),
     Contact(
-        name = "Julio Miguel",
+        name = "Julio",
         phone = "+1 (647) 871-8877",
         R.drawable.sample12
     ),
     Contact(
-        name = "Fifi Maria",
+        name = "Fifi",
         phone = "+1 (647) 395-1112",
         R.drawable.sample4
     ),
     Contact(
-        name = "João",
+        name = "Pégue",
         phone = "+1 (647) 871-7766",
-        R.drawable.sample10
+        R.drawable.sample15
     ),
     Contact(
-        name = "Ana",
+        name = "Inês",
         phone = "+1 (647) 395-0990",
         R.drawable.sample1
     ),
     Contact(
-        name = "Katy",
+        name = "Bia",
         phone = "+1 (647) 395-4513",
         R.drawable.sample5
     ),
     Contact(
-        name= "Antonio",
+        name = "Gil",
         phone = "+1 (647) 781-2448",
         R.drawable.sample9
     ),
     Contact(
-        name= "Leonidas",
+        name = "Carlos",
         phone = "+1 (647) 781-6775",
         R.drawable.sample2
     )
