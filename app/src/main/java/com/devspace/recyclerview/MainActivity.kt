@@ -1,6 +1,7 @@
 package com.devspace.recyclerview
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -42,7 +43,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.setClickOnListener { contact ->
-            Log.d("alex", contact.toString())
+            val intent = Intent(this, ContactDetailActivity::class.java)
+            intent.putExtra("name", contact.name)
+            intent.putExtra("phone", contact.phone)
+            intent.putExtra("icon", contact.icon)
+            startActivity(intent)
         }
     }
 }
@@ -54,7 +59,7 @@ val contacts = listOf(
         R.drawable.sample8
     ),
     Contact(
-        name = "Pamela Shein",
+        name = "Pamela",
         phone = "+1 (647) 871-6743",
         R.drawable.sample11
     ),
@@ -102,5 +107,21 @@ val contacts = listOf(
         name = "Carlos",
         phone = "+1 (647) 781-6775",
         R.drawable.sample2
+    ),
+    Contact(
+        name = "Angel",
+        phone = "+1 (647) 395-8775",
+        R.drawable.sample6
+    ),
+    Contact(
+        name = "Chico",
+        phone = "+1 (647) 781-2309",
+        R.drawable.sample10
+    ),
+    Contact(
+        name = "Megan",
+        phone = "+1 (647) 781-6566",
+        R.drawable.sample7
     )
+
 )
