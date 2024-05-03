@@ -1,5 +1,5 @@
-## Sobre
-Esse aplicativo foi desenvolvido para praticar desenvolvimento de listas em desenvolvimento Android com recyclerview.
+## About the app
+This app was specifically designed to enhance skills in implementing Android RecyclerViews for dynamic list management
 
 ## Screenshots
 <img src = "https://github.com/Ale557333/RecyclerView/assets/71138743/0680158b-da0d-44a5-87ee-e98e2d9527fd" width="240"/>
